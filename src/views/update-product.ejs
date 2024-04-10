@@ -1,0 +1,35 @@
+<h3>Update product</h3>
+<% if(errors){errors.forEach((error)=>{ %>
+    <div class="alert alert-danger" role="alert">
+        <%=error%>
+    </div>
+    <% }) } %>
+
+        <%if(products){%>
+            <form action="/update-product" method="post">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="id" name="id" value="<%=products.id %>">
+                </div>
+                <div class="form-group">
+                    <label for="name">product Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<%= products.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" name="description"
+                        value="<%= products.description %>">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" value="<%= products.price%>">
+                </div>
+                <div class="form-group">
+                    <label for="img">image URL</label>
+                    <input type="text" class="form-control" id="img" name="img" value="<%= products.img %>">
+                </div>
+
+                <button type="submit" class="btn btn-primary">update-product </button>
+
+
+            </form>
+            <%}%>

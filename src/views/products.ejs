@@ -1,0 +1,61 @@
+<% if(locals.lastVisit){%>
+    <div class="alert alert-primary" role="alert">
+        Your last visit to the page is : <%=locals.lastVisit%>
+    </div>
+    <%}%>
+
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((products)=>{ %>
+
+
+                    <tr>
+                        <th>
+                            <%= products.id %>
+                        </th>
+                        <td>
+                            <%= products.name %>
+                        </td>
+                        <td>
+                            <%= products.description %>
+                        </td>
+                        <td scope="col">
+                            <%= products.price %>
+                        </td>
+                        <td>
+                            <img style="height: 400px; width: 250px;" src="<%= products.img %>" />
+                        </td>
+                        <td>
+                            <a href="/update-product/<%= products.id %>" class="btn btn-primary">Update</a>
+                            <button class="btn btn-danger" onclick="deleteButton('<%= products.id %>')">Delete</button>
+                            <!-- <a href="/delete-product/<%= products.id %>" class="btn btn-danger">Delete</a> -->
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+        <script>
+            function deleteButton(id) {
+                console.log("this is the deletebutton function");
+                const result = confirm("are you sure you want to delete the product??");
+                if (result) {
+                    fetch("/delete-product/" + id, { method: "POST" }).then((res) => {
+                        if (res.ok) {
+                            window.location.href = "/";
+                        }
+                    });
+                }
+            }
+
+        </script>

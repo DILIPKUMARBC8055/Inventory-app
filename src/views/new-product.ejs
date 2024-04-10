@@ -1,0 +1,31 @@
+<h3>Add new product</h3>
+<% if(errors){errors.forEach((error)=>{ %>
+    <div class="alert alert-danger" role="alert">
+      <%=error%>
+    </div>
+    <% }) } %>
+      
+
+<form action="/" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">product Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="eg.phone">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="eg.999">
+    </div>
+    <div class="form-group">
+        <label for="img">image URL</label>
+        <input type="file" name="image" id="img" accept="images/*">
+        <!-- <input type="text" class="form-control" id="img" name="image" placeholder="eg.https:/"> -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add </button>
+
+
+</form>
